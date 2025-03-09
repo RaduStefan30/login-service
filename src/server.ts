@@ -1,9 +1,11 @@
 import Fastify from "fastify";
 import dotenv from "dotenv";
+import authRoutes from "./routes/authRoutes";
 
-dotenv.config(); // Load environment variables
-
+dotenv.config();
 const app = Fastify({ logger: true });
+
+app.register(authRoutes);
 
 app.get("/", async () => {
   return { message: "Login Service is running!" };
